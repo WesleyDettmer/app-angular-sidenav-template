@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+
+  <div fxLayout="row">
+
+    <div fxFlex="40%" fxFlex.md="60%" fxFlex.sm="50%" fxFlex.xs="100%">
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Senha atual" formControlName="senhaAtual" [type]="hideSenhaAtual ? 'password' : 'text'"
+          autocomplete="senha-atual">
+        <mat-icon  class="material-icons" matSuffix (click)="hideSenhaAtual = !hideSenhaAtual">
+          {{hideSenhaAtual ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+
+        <mat-error *ngIf="form.controls['senhaAtual'].hasError('required')">
+          Digite sua senha
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nova Senha" formControlName="novaSenha" [type]="hideNovaSenha ? 'password' : 'text'" autocomplete="new-senha">
+        <mat-icon class="material-icons" matSuffix (click)="hideNovaSenha = !hideNovaSenha">
+          {{hideNovaSenha ? "visibility" : "visibility_off"}}
+        </mat-icon>
+
+        <mat-error *ngIf="form.controls['novaSenha'].hasError('required')">
+          Digite sua nova senha
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Confirm Nova Senha" formControlName="novaSenhaConfirm" [type]="hideConfirmNovaSenha ? 'password' : 'text'"
+          autocomplete="new-senha">
+        <mat-icon class="material-icons" matSuffix (click)="hideConfirmNovaSenha = !hideConfirmNovaSenha">
+          {{hideConfirmNovaSenha ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+
+        <mat-error *ngIf="form.controls['novaSenhaConfirm'].hasError('required')">
+          Confirme sua nova senha
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="form.invalid || disableSubmit" (click)="trocarSenha()">Salvar</button>
+    </div>
+
+  </div>
+
+</form>

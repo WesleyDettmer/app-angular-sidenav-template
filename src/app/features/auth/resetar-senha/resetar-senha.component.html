@@ -1,0 +1,44 @@
+<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+  <form [formGroup]="form" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+      <mat-card>
+          <mat-card-subtitle>Resete sua senha</mat-card-subtitle>
+          <mat-card-content>
+
+              <mat-form-field class="full-width">
+                  <input id="emailInput" matInput readonly disabled [value]="email">
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <input id="senhaInput" matInput placeholder="Nova Senha" formControlName="novaSenha" [type]="hideNovaSenha ? 'password' : 'text'" autocomplete="nova-senha">
+                <mat-icon id="toggleSenhaVisibility" matSuffix (click)="hideNovaSenha = !hideNovaSenha">
+                  {{hideNovaSenha ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+          
+                <mat-error *ngIf="form.controls['novaSenha'].hasError('required')">
+                  Nova senha é obrigatória
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <input id="senhaConfirmInput" matInput placeholder="Confirme Nova Senha" formControlName="novaSenhaConfirm" [type]="hideNovaSenhaConfirm ? 'password' : 'text'" autocomplete="new-senha">
+                <mat-icon id="toggleSenhaConfirmVisibility" matSuffix (click)="hideNovaSenhaConfirm = !hideNovaSenhaConfirm">
+                  {{hideNovaSenhaConfirm ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+          
+                <mat-error *ngIf="form.controls['novaSenhaConfirm'].hasError('required')">
+                  Senha atual é obrigatória
+                </mat-error>
+              </mat-form-field>
+
+          </mat-card-content>
+
+          <mat-card-actions class="login-actions">
+              <button id="submit" mat-raised-button color="primary" [disabled]="form.invalid || loading" (click)="resetarSenha()">OK</button>
+              <button id="cancel" mat-button (click)="cancel()">Voltar ao Login</button>
+          </mat-card-actions>
+
+      </mat-card>
+
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  </form>
+</div>

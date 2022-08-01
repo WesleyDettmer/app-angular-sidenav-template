@@ -1,0 +1,54 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+    <mat-card>
+      <mat-card-content>
+        <h2>Planetas</h2>
+
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="rotation_period">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rotação </th>
+            <td mat-cell *matCellDef="let element"> {{element.rotation_period}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="orbital_period">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Periodo Orbital </th>
+            <td mat-cell *matCellDef="let element"> {{element.orbital_period}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="diameter">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Diametro </th>
+            <td mat-cell *matCellDef="let element"> {{element.diameter}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="climate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Clima </th>
+            <td mat-cell *matCellDef="let element"> {{element.climate}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="population">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> População </th>
+            <td mat-cell *matCellDef="let element"> {{element.population}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
